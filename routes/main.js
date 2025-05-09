@@ -3,9 +3,17 @@ const router = express.Router();
 
 const rootDir = require("../util/path");
 const path = require("path");
+const { title } = require("process");
+
+const users = [];
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "main.html"));
+  res.render("main", {
+    pageTitle: "Home",
+    users: users,
+    path: "/",
+  });
 });
 
-module.exports = router;
+exports.users = users;
+exports.routes = router;
